@@ -1,0 +1,11 @@
+bin
+gen
+out
+output
+*.iml
+.project
+.classpath
+.idea
+.settings
+.DS_Store
+Thumbs.db
