@@ -27,10 +27,7 @@ public enum Type {
     STRING_ARRAY_LIST("ArrayList<String>", 3, "StringArrayList", "StringList", null, true),
     PARCELABLE("Parcelable", 4, null),
     PARCELABLE_ARRAY("Parcelable[]", 5, "TypedArray"),
-    PARCELABLE_ARRAY_LIST("ArrayList<Parcelable>", 6, "TypedArrayList", "TypedList", null, true),
-    FILE_DESCRIPTOR("FileDescriptor", 0, "FileDescriptor().getFileDescriptor", "FileDescriptor",
-            "java.io", false),
-    I_BINDER("IBinder", 0, "StrongBinder", "StrongBinder", "android.os", false);
+    PARCELABLE_ARRAY_LIST("ArrayList<Parcelable>", 6, "TypedArrayList", "TypedList", null, true);
 
     public String name;
     public String readName;

@@ -13,7 +13,7 @@
 	        "type":"int" // Required. Valid values are "int", "long", "byte", "float", "double",
 	        "boolean, "String", "Bundle", "int[]", "long[]", "byte[]", "char[]", "float[]",
 	        "double[]", "String[]", "ArrayList<String>", "Parcelable", "Parcelable[]",
-	        "ArrayList<Parcelable>", "FileDescriptor", "IBinder"
+	        "ArrayList<Parcelable>"
 	        "parcelableClassName":"MyParcelableClass", // // Required if type is "Parcelable",
 	        "Parcelable[]" or "ArrayList<Parcelable>".
 	        "parcelableClassPackage":"com.example.my.parcelable.class.package", // Optional.

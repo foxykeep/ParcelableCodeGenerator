@@ -88,15 +88,6 @@
             "type":"ArrayList<Parcelable>",
             "parcelableClassName":"MyParcelable2",
             "parcelableClassPackage":"com.foxykeep.parcelablecodegenerator.model.submodel"
-        },
-        {
-            "name":"fileDescriptorField",
-            "type":"FileDescriptor",
-            "isGroupStart":true
-        },
-        {
-            "name":"iBinderField",
-            "type":"IBinder"
         }
 	]
 }
