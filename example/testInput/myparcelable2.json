@@ -1,0 +1,16 @@
+{
+    "package":"com.foxykeep.parcelablecodegenerator.model.submodel",
+    "name":"MyParcelable2",
+    "superClassName":"MySuperParcelable2",
+    "superClassPackage":"com.foxykeep.parcelablecodegenerator.model",
+	"fields":[
+		{
+	        "name":"intField",
+	        "type":"int",
+        },
+        {
+            "name":"longField",
+            "type":"long"
+        }
+	]
+}

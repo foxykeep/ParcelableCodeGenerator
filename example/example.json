@@ -1,0 +1,29 @@
+// Don't use this file if you want to try the generator.
+{
+    "package":"com.example.mypackage", // Required. Application package.
+    "name":"MyClass", // Required. Name of the Parcelable class to generate
+    "superClassName":"MySuperClass", // Optional. Name of the superclass to extend from
+    "superClassPackage":"com.example.my.superclass.package", // Optional. Package of the
+    superclass. Default will be the package of the generated class.
+    "isSuperClassParcelable":false // Optional. Whether the superclass is parcelable too. Default
+     is false.
+	"fields":[ // your fields
+		{
+	        "name":"myField" // Required. Name of the field.
+	        "type":"int" // Required. Valid values are "int", "long", "byte", "float", "double",
+	        "boolean, "String", "Bundle", "int[]", "long[]", "byte[]", "char[]", "float[]",
+	        "double[]", "String[]", "ArrayList<String>", "Parcelable", "Parcelable[]",
+	        "ArrayList<Parcelable>", "FileDescriptor", "IBinder"
+	        "parcelableClassName":"MyParcelableClass", // // Required if type is "Parcelable",
+	        "Parcelable[]" or "ArrayList<Parcelable>".
+	        "parcelableClassPackage":"com.example.my.parcelable.class.package", // Optional.
+	        Package of the parcelableClassName. Default will be the package of the generated class.
+	        "isGroupStart":true // Optional. Default is false. It will create a new group => add a
+	        new line before the group.
+		},
+        {...}
+	]
+}
+
+// If you want to test the generator, copy the file in the subfolder "testInput" into the root
+folder "input"

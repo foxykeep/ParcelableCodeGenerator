@@ -1,0 +1,14 @@
+{
+    "package":"com.foxykeep.parcelablecodegenerator.model",
+    "name":"MySuperParcelable",
+	"fields":[
+		{
+	        "name":"booleanField",
+	        "type":"boolean",
+        },
+        {
+            "name":"longField",
+            "type":"long"
+        }
+	]
+}
