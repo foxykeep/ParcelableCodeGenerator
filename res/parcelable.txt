@@ -1,0 +1,32 @@
+package %1$s;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+%2$s
+public final class %3$s%4$s implements Parcelable {
+
+%5$s
+    public %3$s() {}
+
+    // Parcelable management
+    private %3$s(Parcel in) {
+%6$s}
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+%7$s}
+
+    public static final Parcelable.Creator<%3$s> CREATOR = new Parcelable.Creator<%3$s>() {
+        public %3$s createFromParcel(Parcel in) {
+            return new %3$s(in);
+        }
+
+        public %3$s[] newArray(int size) {
+            return new %3$s[size];
+        }
+    };
+}
