@@ -20,6 +20,7 @@
         },
         {
             "name":"doubleField",
+            "defaultValue":"12.45",
             "type":"double"
         },
         {
@@ -29,6 +30,7 @@
         {
             "name":"stringField",
             "type":"String",
+            "defaultValue":"\"Hello\"",
             "isGroupStart":true
         },
         {

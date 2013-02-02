@@ -92,7 +92,7 @@ public final class ParcelableGenerator {
                 sbConstructor.append("\n");
                 sbWriteToParcel.append("\n");
             }
-            sbFields.append(type.getField(name, parcelableClassName));
+            sbFields.append(type.getField(name, fieldData.defaultValue, parcelableClassName));
             sbConstructor.append(type.getConstructorString(name, parcelableClassName));
             sbWriteToParcel.append(type.getWriteToParcelString(name));
         }

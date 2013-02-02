@@ -70,25 +70,32 @@ public enum Type {
 
     private static final String TAB = "    ";
 
-    private static final String FIELD = TAB + "public %1$s %2$s;\n";
-    private static final String FIELD_PARCELABLE_ARRAY = TAB + "public %1$s[] %2$s;" +
+    private static final String FIELD = TAB + "public %1$s %2$s%3$s;\n";
+    private static final String FIELD_PARCELABLE_ARRAY = TAB + "public %1$s[] %2$s%3$s;" +
             "\n";
-    private static final String FIELD_PARCELABLE_ARRAY_LIST = TAB + "public ArrayList<%1$s> %2$s;" +
-            "\n";
+    private static final String FIELD_PARCELABLE_ARRAY_LIST = TAB + "public ArrayList<%1$s> " +
+            "%2$s%3$s;\n";
+    private static final String VALUE = " = %1$s";
 
-    public String getField(String fieldName, String parcelableClassName) {
+    public String getField(String fieldName, String defaultValue, String parcelableClassName) {
+        String value = "";
+        if (defaultValue != null) {
+            value = String.format(VALUE, defaultValue);
+        }
+
         switch (methodType) {
             case 0: // standard
             case 1: // boolean
             case 2: // Array
             case 3: // Array List
-                return String.format(FIELD, name, fieldName);
+                return String.format(FIELD, name, fieldName, value);
             case 4: // Parcelable
-                return String.format(FIELD, parcelableClassName, fieldName);
+                return String.format(FIELD, parcelableClassName, fieldName, value);
             case 5: // Parcelable Array
-                return String.format(FIELD_PARCELABLE_ARRAY, parcelableClassName, fieldName);
+                return String.format(FIELD_PARCELABLE_ARRAY, parcelableClassName, fieldName, value);
             case 6: // Parcelable ArrayList
-                return String.format(FIELD_PARCELABLE_ARRAY_LIST, parcelableClassName, fieldName);
+                return String.format(FIELD_PARCELABLE_ARRAY_LIST, parcelableClassName, fieldName,
+                        value);
         }
         return null;
     }

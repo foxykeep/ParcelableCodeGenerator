@@ -19,6 +19,7 @@ public final class FieldData {
 
     public String name;
     public Type type;
+    public String defaultValue;
 
     public String parcelableClassName;
     public String parcelableClassPackage;
@@ -33,6 +34,8 @@ public final class FieldData {
             throw new IllegalArgumentException(
                     "The field '" + name + "' is of unknown type '" + typeName + "'.");
         }
+
+        defaultValue = JsonUtils.getStringFixFalseNull(json, "defaultValue");
 
         parcelableClassName = JsonUtils.getStringFixFalseNull(json, "parcelableClassName");
         parcelableClassPackage = JsonUtils.getStringFixFalseNull(json, "parcelableClassPackage");

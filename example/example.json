@@ -14,6 +14,8 @@
 	        "boolean, "String", "Bundle", "int[]", "long[]", "byte[]", "char[]", "float[]",
 	        "double[]", "String[]", "ArrayList<String>", "Parcelable", "Parcelable[]",
 	        "ArrayList<Parcelable>"
+	        "default":"<defaultValue>", // Optional. Default value to set to the field. It will
+	        be copy as is without check to see if it's a valid value.
 	        "parcelableClassName":"MyParcelableClass", // // Required if type is "Parcelable",
 	        "Parcelable[]" or "ArrayList<Parcelable>".
 	        "parcelableClassPackage":"com.example.my.parcelable.class.package", // Optional.
