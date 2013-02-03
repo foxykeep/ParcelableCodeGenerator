@@ -1,6 +1,7 @@
 {
     "package":"com.foxykeep.parcelablecodegenerator.model",
     "name":"MySuperParcelable",
+    "hasSubClasses":true,
 	"fields":[
 		{
 	        "name":"booleanField",

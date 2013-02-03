@@ -40,7 +40,7 @@ public final class FieldData {
         parcelableClassName = JsonUtils.getStringFixFalseNull(json, "parcelableClassName");
         parcelableClassPackage = JsonUtils.getStringFixFalseNull(json, "parcelableClassPackage");
 
-        isGroupStart = json.optBoolean("isGroupStart", false);
+        isGroupStart = json.optBoolean("isGroupStart");
     }
 
     public static ArrayList<FieldData> getFieldsData(JSONArray jsonArray) throws JSONException {

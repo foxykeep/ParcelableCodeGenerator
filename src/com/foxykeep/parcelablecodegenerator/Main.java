@@ -76,19 +76,22 @@ public final class Main {
 
                 // Classes generation
                 String classPackage, className, superClassPackage, superClassName;
-                boolean isSuperClassParcelable;
+                boolean isSuperClassParcelable, hasSubClasses;
+
                 classPackage = root.getString("package");
                 className = root.getString("name");
                 superClassPackage = JsonUtils.getStringFixFalseNull(root, "superClassPackage");
                 superClassName = JsonUtils.getStringFixFalseNull(root, "superClassName");
                 isSuperClassParcelable = root.optBoolean("isSuperClassParcelable");
+                hasSubClasses = root.optBoolean("hasSubClasses");
 
                 ArrayList<FieldData> fieldDataList = FieldData.getFieldsData(root.getJSONArray(
                         "fields"));
 
                 // Parcelable generation
                 ParcelableGenerator.generate(fileInfo.dirPath, classPackage, className,
-                        superClassPackage, superClassName, isSuperClassParcelable, fieldDataList);
+                        superClassPackage, superClassName, isSuperClassParcelable, hasSubClasses,
+                        fieldDataList);
             } catch (JSONException e) {
                 e.printStackTrace();
                 return;

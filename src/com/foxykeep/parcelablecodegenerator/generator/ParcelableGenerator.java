@@ -31,7 +31,7 @@ public final class ParcelableGenerator {
 
     public static void generate(String dirPath, String classPackage, String className,
             String superClassPackage, String superClassName, boolean isSuperClassParcelable,
-            ArrayList<FieldData> fieldDataList) {
+            boolean hasSubClasses, ArrayList<FieldData> fieldDataList) {
 
         Set<String> importSet = new HashSet<String>();
         StringBuilder sbImports = new StringBuilder();
@@ -39,6 +39,15 @@ public final class ParcelableGenerator {
         StringBuilder sbFields = new StringBuilder();
         StringBuilder sbConstructor = new StringBuilder();
         StringBuilder sbWriteToParcel = new StringBuilder();
+
+        String finalClass, constructorProtection = null;
+        if (hasSubClasses) {
+            finalClass = "";
+            constructorProtection = "protected";
+        } else {
+            finalClass = "final ";
+            constructorProtection = "private";
+        }
 
         String line;
         StringBuilder sb = new StringBuilder();
@@ -103,7 +112,7 @@ public final class ParcelableGenerator {
 
         String output = String.format(sb.toString(), classPackage, sbImports.toString(), className,
                 extendsString, sbFields.toString(), sbConstructor.toString(),
-                sbWriteToParcel.toString());
+                sbWriteToParcel.toString(), finalClass, constructorProtection);
         FileCache.saveFile(createOutputFilePath(dirPath, classPackage, className), output);
 
     }

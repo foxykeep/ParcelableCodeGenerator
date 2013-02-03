@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 %2$s
-public final class %3$s%4$s implements Parcelable {
+public %8$sclass %3$s%4$s implements Parcelable {
 
 %5$s
     public %3$s() {}
 
     // Parcelable management
-    private %3$s(Parcel in) {
+    %9$s %3$s(Parcel in) {
 %6$s}
 
     public int describeContents() {

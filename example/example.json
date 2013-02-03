@@ -7,6 +7,8 @@
     superclass. Default will be the package of the generated class.
     "isSuperClassParcelable":false // Optional. Whether the superclass is parcelable too. Default
      is false.
+    "hasSubClasses":true // Optional. Whether this class has subclasses (Constructor will be
+    protected and class will not be final). Default is false.
 	"fields":[ // your fields
 		{
 	        "name":"myField" // Required. Name of the field.
