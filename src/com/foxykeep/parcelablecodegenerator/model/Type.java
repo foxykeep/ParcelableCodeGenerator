@@ -103,7 +103,8 @@ public enum Type {
 
     private static final String CONSTRUCTOR = TAB + TAB + "%1$s = in.%2$s%3$s();\n";
     private static final String CONSTRUCTOR_BOOLEAN = TAB + TAB + "%1$s = in.readInt() == 1;\n";
-    private static final String CONSTRUCTOR_PARCELABLE = TAB + TAB + "%1$s = new %2$s(in);\n";
+    private static final String CONSTRUCTOR_PARCELABLE = TAB + TAB + "%1$s = %2$s.CREATOR" +
+            ".createFromParcel(in);\n";
     private static final String CONSTRUCTOR_PARCELABLE_ARRAY = TAB + TAB + "%1$s = in" +
             ".create%2$s(%3$s.CREATOR);\n";
 
