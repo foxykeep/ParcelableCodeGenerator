@@ -2,7 +2,6 @@ package %1$s;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 %2$s
 public %8$sclass %3$s%4$s implements Parcelable {
 

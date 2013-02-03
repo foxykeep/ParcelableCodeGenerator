@@ -106,7 +106,12 @@ public final class ParcelableGenerator {
             sbWriteToParcel.append(type.getWriteToParcelString(name));
         }
 
+        boolean firstImport = true;
         for (String importString : importSet) {
+            if (firstImport) {
+                sbImports.append("\n");
+                firstImport = false;
+            }
             sbImports.append(importString);
         }
 
