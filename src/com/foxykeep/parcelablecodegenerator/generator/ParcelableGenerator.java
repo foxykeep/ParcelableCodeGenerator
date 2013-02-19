@@ -31,7 +31,7 @@ public final class ParcelableGenerator {
 
     public static void generate(String dirPath, String classPackage, String className,
             String superClassPackage, String superClassName, boolean isSuperClassParcelable,
-            boolean hasSubClasses, ArrayList<FieldData> fieldDataList) {
+            boolean hasSubClasses, boolean isAbstract, ArrayList<FieldData> fieldDataList) {
 
         Set<String> importSet = new HashSet<String>();
         StringBuilder sbImports = new StringBuilder();
@@ -40,24 +40,36 @@ public final class ParcelableGenerator {
         StringBuilder sbConstructor = new StringBuilder();
         StringBuilder sbWriteToParcel = new StringBuilder();
 
-        String finalClass, constructorProtection = null;
+        String classModifiers, constructorProtection = null;
         if (hasSubClasses) {
-            finalClass = "";
+            if (isAbstract) {
+                classModifiers = "abstract ";
+            } else {
+                classModifiers = "";
+            }
             constructorProtection = "protected";
         } else {
-            finalClass = "final ";
+            classModifiers = "final ";
             constructorProtection = "private";
         }
 
-        String line;
-        StringBuilder sb = new StringBuilder();
-        BufferedReader br;
+        String parcelableText, parcelableCreatorText;
         try {
-            sb.setLength(0);
-            br = new BufferedReader(new FileReader(new File("res/parcelable.txt")));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            File file = new File("res/parcelable.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
                 sb.append(line).append("\n");
             }
+            parcelableText = sb.toString();
+            sb.setLength(0);
+            file = new File("res/parcelable_creator.txt");
+            br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            parcelableCreatorText = sb.toString();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return;
@@ -74,9 +86,17 @@ public final class ParcelableGenerator {
             }
 
             if (isSuperClassParcelable) {
-                sbConstructor.append(TAB + TAB + "super(in);\n\n");
-                sbWriteToParcel.append(TAB + TAB + "super.writeToParcel(dest, flags);\n\n");
+                sbConstructor.append(TAB + TAB + "super(in);\n");
+                sbWriteToParcel.append(TAB + TAB + "super.writeToParcel(dest, flags);\n");
             }
+        }
+
+        if (fieldDataList.size() > 0) {
+            if (isSuperClassParcelable) {
+                sbConstructor.append("\n");
+                sbWriteToParcel.append("\n");
+            }
+            sbFields.append("\n");
         }
 
         for (FieldData fieldData : fieldDataList) {
@@ -115,9 +135,15 @@ public final class ParcelableGenerator {
             sbImports.append(importString);
         }
 
-        String output = String.format(sb.toString(), classPackage, sbImports.toString(), className,
+        String creator = "";
+        if (!isAbstract) {
+            creator = String.format(parcelableCreatorText, className);
+        }
+
+        String output = String.format(parcelableText, classPackage, sbImports.toString(), className,
                 extendsString, sbFields.toString(), sbConstructor.toString(),
-                sbWriteToParcel.toString(), finalClass, constructorProtection);
+                sbWriteToParcel.toString(), classModifiers, constructorProtection, creator);
+
         FileCache.saveFile(createOutputFilePath(dirPath, classPackage, className), output);
 
     }

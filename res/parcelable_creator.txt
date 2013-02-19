@@ -1,0 +1,10 @@
+
+    public static final Parcelable.Creator<%1$s> CREATOR = new Parcelable.Creator<%1$s>() {
+        public %1$s createFromParcel(Parcel in) {
+            return new %1$s(in);
+        }
+
+        public %1$s[] newArray(int size) {
+            return new %1$s[size];
+        }
+    };

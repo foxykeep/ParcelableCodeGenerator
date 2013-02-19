@@ -4,30 +4,33 @@
     "name":"MyClass", // Required. Name of the Parcelable class to generate
     "superClassName":"MySuperClass", // Optional. Name of the superclass to extend from
     "superClassPackage":"com.example.my.superclass.package", // Optional. Package of the
-    superclass. Default will be the package of the generated class.
-    "isSuperClassParcelable":false // Optional. Whether the superclass is parcelable too. Default
-     is false.
-    "hasSubClasses":true // Optional. Whether this class has subclasses (Constructor will be
-    protected and class will not be final). Default is false.
+            superclass. Default will be the package of the generated class.
+    "isSuperClassParcelable":false, // Optional. Whether the superclass is parcelable too. Default
+            is false.
+    "hasSubClasses":true, // Optional. Whether this class has subclasses (Constructor will be
+            protected and class will not be final). Default is false.
+    "isAbstract":false, // Optional. Whether this class is abstract (It will not have a CREATOR).
+            Can only be used if the flag "hasSubClasses" is already set to true.
 	"fields":[ // your fields
 		{
 	        "name":"myField" // Required. Name of the field.
 	        "type":"int" // Required. Valid values are "int", "long", "byte", "float", "double",
-	        "boolean, "String", "Bundle", "int[]", "long[]", "byte[]", "char[]", "float[]",
-	        "double[]", "String[]", "ArrayList<String>", "Parcelable", "Parcelable[]",
-	        "ArrayList<Parcelable>"
+	                "boolean, "String", "Bundle", "int[]", "long[]", "byte[]", "char[]", "float[]",
+	                "double[]", "String[]", "ArrayList<String>", "Parcelable", "Parcelable[]",
+	                "ArrayList<Parcelable>"
 	        "default":"<defaultValue>", // Optional. Default value to set to the field. It will
-	        be copy as is without check to see if it's a valid value.
-	        "parcelableClassName":"MyParcelableClass", // // Required if type is "Parcelable",
-	        "Parcelable[]" or "ArrayList<Parcelable>".
+	                be copy as is without check to see if it's a valid value.
+	        "parcelableClassName":"MyParcelableClass", // Required if type is "Parcelable",
+	                "Parcelable[]" or "ArrayList<Parcelable>".
 	        "parcelableClassPackage":"com.example.my.parcelable.class.package", // Optional.
-	        Package of the parcelableClassName. Default will be the package of the generated class.
+	                Package of the parcelableClassName. Default will be the package of the
+	                generated class.
 	        "isGroupStart":true // Optional. Default is false. It will create a new group => add a
-	        new line before the group.
+	                new line before the group.
 		},
         {...}
 	]
 }
 
-// If you want to test the generator, copy the file in the subfolder "testInput" into the root
+// If you want to test the generator, copy the files of the subfolder "testInput" into the root
 folder "input"

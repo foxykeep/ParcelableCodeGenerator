@@ -11,6 +11,7 @@ import com.foxykeep.parcelablecodegenerator.generator.ParcelableGenerator;
 import com.foxykeep.parcelablecodegenerator.model.FieldData;
 import com.foxykeep.parcelablecodegenerator.utils.JsonUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -76,7 +77,7 @@ public final class Main {
 
                 // Classes generation
                 String classPackage, className, superClassPackage, superClassName;
-                boolean isSuperClassParcelable, hasSubClasses;
+                boolean isSuperClassParcelable, hasSubClasses, isAbstract;
 
                 classPackage = root.getString("package");
                 className = root.getString("name");
@@ -84,14 +85,24 @@ public final class Main {
                 superClassName = JsonUtils.getStringFixFalseNull(root, "superClassName");
                 isSuperClassParcelable = root.optBoolean("isSuperClassParcelable");
                 hasSubClasses = root.optBoolean("hasSubClasses");
+                if (hasSubClasses) {
+                    isAbstract = root.optBoolean("isAbstract");
+                } else {
+                    isAbstract = false;
+                }
 
-                ArrayList<FieldData> fieldDataList = FieldData.getFieldsData(root.getJSONArray(
-                        "fields"));
+                JSONArray fieldJsonArray = root.optJSONArray("fields");
+                ArrayList<FieldData> fieldDataList;
+                if (fieldJsonArray != null) {
+                    fieldDataList = FieldData.getFieldsData(fieldJsonArray);
+                } else {
+                    fieldDataList = new ArrayList<FieldData>();
+                }
 
                 // Parcelable generation
                 ParcelableGenerator.generate(fileInfo.dirPath, classPackage, className,
                         superClassPackage, superClassName, isSuperClassParcelable, hasSubClasses,
-                        fieldDataList);
+                        isAbstract, fieldDataList);
             } catch (JSONException e) {
                 e.printStackTrace();
                 return;
