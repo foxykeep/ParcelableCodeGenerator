@@ -90,6 +90,13 @@
             "type":"ArrayList<Parcelable>",
             "parcelableClassName":"MyParcelable2",
             "parcelableClassPackage":"com.foxykeep.parcelablecodegenerator.model.submodel"
+        },
+        {
+            "name":"parcelableSparseArrayField",
+            "type":"SparseArray<Parcelable>",
+            "parcelableClassName":"MyParcelable2",
+            "parcelableClassPackage":"com.foxykeep.parcelablecodegenerator.model.submodel",
+            "isGroupStart":true
         }
 	]
 }

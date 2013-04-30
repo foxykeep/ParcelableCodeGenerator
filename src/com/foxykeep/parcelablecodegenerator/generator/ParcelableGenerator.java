@@ -111,6 +111,9 @@ public final class ParcelableGenerator {
             if (type.needsArrayListImport) {
                 importSet.add(String.format(IMPORT, "java.util", "ArrayList"));
             }
+            if (type.needsSparseArrayImport) {
+                importSet.add(String.format(IMPORT, "android.util", "SparseArray"));
+            }
             if (fieldData.parcelableClassName != null && fieldData.parcelableClassPackage != null) {
                 importSet.add(String.format(IMPORT, fieldData.parcelableClassPackage,
                         parcelableClassName));
