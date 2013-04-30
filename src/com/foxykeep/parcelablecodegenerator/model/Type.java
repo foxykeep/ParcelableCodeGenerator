@@ -117,9 +117,9 @@ public enum Type {
     private static final String CONSTRUCTOR_PARCELABLE_ARRAY = TAB + TAB + "%1$s = in" +
             ".create%2$s(%3$s.CREATOR);\n";
     private static final String CONSTRUCTOR_PARCELABLE_SPARSE_ARRAY = TAB + TAB + "%1$s = new " +
-            "SparseArray<%2$s>();\n" + TAB + TAB + "final int %1$sSize = in.readInt();\n" + TAB +
-            TAB + "for (int i = 0; i < %1$sSize; i++) {\n" + TAB + TAB + TAB + "%1$s.append(in" +
-            ".readInt(), %2$s.CREATOR.createFromParcel(in));\n" + TAB + TAB + "}\n";
+            "SparseArray<%2$s>();\n" + TAB + TAB + "for (int i = 0, n = in.readInt(); i < n; i++)" +
+            " {\n" + TAB + TAB + TAB + "%1$s.append(in.readInt(), %2$s.CREATOR.createFromParcel" +
+            "(in));\n" + TAB + TAB + "}\n";
 
     public String getConstructorString(String fieldName, String parcelableClassName) {
         switch (methodType) {
