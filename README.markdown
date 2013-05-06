@@ -33,7 +33,7 @@ Building/Running from the CLI
     cd bin
     ln -s ../res .
     javac $(find ../src -name *.java) -d .
-    cp ../example/fullgen.json ./input
+    cp ../example/testInput/fullgen.json ./input
     java com/foxykeep/parcelablecodegenerator/Main
 ```
 
