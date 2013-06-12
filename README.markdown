@@ -28,8 +28,7 @@ In order to use it, here are the steps to follow :
 Building/Running from the CLI
 -----------------------------
 ```
-    mkdir bin
-    mkdir bin/input
+    mkdir -p bin/input
     cd bin
     ln -s ../res .
     javac $(find ../src -name *.java) -d .
